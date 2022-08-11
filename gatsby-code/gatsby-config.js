@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Sanity Blog`,
@@ -13,6 +15,15 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: "cong4818",
+        dataset: "production",
+        watchMode: true,
+        token: process.env.SANITY_TOKEN
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
